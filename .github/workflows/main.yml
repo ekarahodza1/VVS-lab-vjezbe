@@ -1,0 +1,29 @@
+name: Deploy on push
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  web-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.x
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build with dotnet
+      run: dotnet build --configuration Release --no-restore
+    - name: Publish
+      run: dotnet publish --configuration Release -r win-x64 --output ./publish Calculations1.sln
+    - name: FTP Deploy
+      uses: SamKirkland/FTP-Deploy-Action@4.2.0
+      with:
+        server: 192.185.10.76
+        username: calc_ftp
+        password: ${{ secrets.FTP_TEST_PASSWORD }}
+        local-dir: ./publish/
