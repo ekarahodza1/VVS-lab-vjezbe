@@ -1,0 +1,8 @@
+﻿name,years,months,category,type,boa,loa,standard,location
+name,2,0,4,2,1,0,1,Gothenburg
+namelastname,1,1,14,2,3,2,2,Malmo
+name123,1,2,22,1,2,7,1,Orter
+name_mon,2,1,29,1,2,32,2,Orter
+name.,2,4,14,2,1,8,1,Gothenburg
+name2,2,4,19,1,1,2,1,Malmo
+name,2,4,4,2,1,0,1,Malmo

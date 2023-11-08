@@ -16,5 +16,9 @@ namespace Calculations1.Services.CalculationsService
         ServiceResponse<List<Calculation>> GetCalculationsFilter(string? name, int Number = 1, Category? category = null, ConstructionType? type = null);
         ServiceResponse<List<Calculation>> DeleteCalculation(int id);
         ServiceResponse<List<Calculation>> AddCalculation(Calculation calculation);
+
+
     }
+
+
 }

@@ -115,7 +115,8 @@ namespace Calculations1.Controllers
             }
             catch (ArgumentException e)
             {
-                return StatusCode(403, e.Message);
+                //return StatusCode(403, e.Message);
+                throw e;
             }
              
         }

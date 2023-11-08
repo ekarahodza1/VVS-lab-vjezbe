@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<calculations>
+	<calculation>
+		<name>name</name>
+		<years>2</years>
+		<months>0</months>
+		<category>4</category>
+		<type>2</type>
+		<boa>1</boa>
+		<loa>0</loa>
+		<standard>1</standard>
+		<location>Gothenburg</location>
+	</calculation>
+	<calculation>
+		<name>namelastname</name>
+		<years>1</years>
+		<months>1</months>
+		<category>12</category>
+		<type>2</type>
+		<boa>3</boa>
+		<loa>2</loa>
+		<standard>2</standard>
+		<location>Malmo</location>
+	</calculation>
+	<calculation>
+		<name>name123</name>
+		<years>1</years>
+		<months>2</months>
+		<category>22</category>
+		<type>1</type>
+		<boa>2</boa>
+		<loa>7</loa>
+		<standard>1</standard>
+		<location>Orter</location>
+	</calculation>
+</calculations>

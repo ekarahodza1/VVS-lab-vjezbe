@@ -7,6 +7,34 @@ namespace Calculations1.Models
 {
     public class CalculationDto
     {
+        public CalculationDto()
+        {
+        }
+
+        public CalculationDto(string name, int projectNumber, DateTime startDate, DateTime architectDate, string projectLeadName, int years, int months, Category category, ConstructionType type, string location, bool urbanArea, int apartmentNumber, int bathNumber, int toiletNumber, double loa, double boa, double darkBta, double lightBta, int internalStandard, int externalStandard)
+        {
+            Name = name;
+            ProjectNumber = projectNumber;
+            StartDate = startDate;
+            ArchitectDate = architectDate;
+            ProjectLeadName = projectLeadName;
+            this.years = years;
+            this.months = months;
+            Category = category;
+            Type = type;
+            Location = location;
+            UrbanArea = urbanArea;
+            ApartmentNumber = apartmentNumber;
+            BathNumber = bathNumber;
+            ToiletNumber = toiletNumber;
+            Loa = loa;
+            Boa = boa;
+            this.darkBta = darkBta;
+            this.lightBta = lightBta;
+            InternalStandard = internalStandard;
+            ExternalStandard = externalStandard;
+        }
+
         public string Name { get; set; }
         public int ProjectNumber { get; set; }
         public DateTime StartDate { get; set; }
@@ -27,5 +55,7 @@ namespace Calculations1.Models
         public double lightBta { get; set; }
         public int InternalStandard { get; set; }
         public int ExternalStandard { get; set; }
+
+        
     }
 }

@@ -48,16 +48,60 @@ namespace Calculations1.Services.CalculationsService
             var serviceResponse = new ServiceResponse<List<Calculation>>();
             var dbCalculations = GetList().Where(c => c.User.Id == GetUserId() && c.ParentID == 0).ToList();
 
-            if (!(name.Equals("ššđšđ") || name.Equals("*"))) dbCalculations = dbCalculations.Select(sublist => sublist).Where(c => c.Name.ToLower().Contains(name.ToLower())).ToList();
+            if (!(name.Equals("ššđšđ") || name.Equals("*")))
+            {
+                var filteredCalculations = new List<Calculation>();
+                foreach (var sublist in dbCalculations)
+                {
+                    if (sublist.Name.ToLower().Contains(name.ToLower()))
+                    {
+                        filteredCalculations.Add(sublist);
+                    }
+                }
+                dbCalculations = filteredCalculations;
+            }
 
-            if (category != 0) dbCalculations = dbCalculations.Select(sublist => sublist).Where(c => c.Category == (category)).ToList();
-            if (type != 0) dbCalculations = dbCalculations.Select(sublist => sublist).Where(c => c.Type == type).ToList();
-            
-            if (dbCalculations.Count() < (number - 1) * 10) serviceResponse.Data = new List<Calculation>();
-            else if (dbCalculations.Count() - number * 10 < 0) serviceResponse.Data = dbCalculations.GetRange((number - 1) * 10, dbCalculations.Count % 10);    
-            else serviceResponse.Data = dbCalculations.GetRange((number - 1) * 10, 10);
+            if (category != 0)
+            {
+                var filteredCalculations = new List<Calculation>();
+                foreach (var sublist in dbCalculations)
+                {
+                    if (sublist.Category == category)
+                    {
+                        filteredCalculations.Add(sublist);
+                    }
+                }
+                dbCalculations = filteredCalculations;
+            }
+
+            if (type != 0)
+            {
+                var filteredCalculations = new List<Calculation>();
+                foreach (var sublist in dbCalculations)
+                {
+                    if (sublist.Type == type)
+                    {
+                        filteredCalculations.Add(sublist);
+                    }
+                }
+                dbCalculations = filteredCalculations;
+            }
+
+            if (dbCalculations.Count() < (number - 1) * 10)
+            {
+                serviceResponse.Data = new List<Calculation>();
+            }
+            else if (dbCalculations.Count() - number * 10 < 0)
+            {
+                serviceResponse.Data = dbCalculations.GetRange((number - 1) * 10, dbCalculations.Count % 10);
+            }
+            else
+            {
+                serviceResponse.Data = dbCalculations.GetRange((number - 1) * 10, 10);
+            }
 
             return serviceResponse;
+
         }
 
         public ServiceResponse<List<Calculation>> GetCalculationById(int id)
